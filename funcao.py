@@ -40,7 +40,9 @@ def cadastrar_crm(conn, uf, crm):
         resultado = cursor.fetchone()
 
         if resultado[0] > 0:
-            return f"Médico: {nome_medico}\nCRM: {crm}\n\nJá cadastrado no estado {uf.upper()}."
+            cursor.execute("update medicos set NOME = ? WHERE CR = ? AND UF = ?", (nome_medico, crm, uf.upper()))
+            conn.commit()
+            return f"Médico: {nome_medico} CRM: {crm}\n\nJÁ CADASTRADO NA UF {uf.upper()}."
 
         cursor.execute(script_crm, (nome_medico, crm, uf.upper()))
         conn.commit()

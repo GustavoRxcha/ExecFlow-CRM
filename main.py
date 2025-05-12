@@ -104,10 +104,10 @@ class CadastroCRM(Frame):
         Label(self, image=self.controller.logo_tk).pack(pady=(150, 10))
 
     def efetuar_cadastro(self):
-        cr_digitado = self.inserir_cr.get()
+        cr_digitado = self.inserir_cr.get().strip()
         self.inserir_cr.delete(0, END)
 
-        uf_digitado = self.inserir_uf.get()
+        uf_digitado = self.inserir_uf.get().strip()
         self.inserir_uf.delete(0, END)
 
         if cr_digitado and uf_digitado:
