@@ -23,6 +23,10 @@ def cadastrar_crm(conn, uf, crm):
             campos = linha.strip().split("!")
             if len(campos) >= 3 and campos[0] == str(crm):
                 nome_medico = campos[2].upper()
+
+                if campos[4] != 'Ativo':
+                    return f"Médico com CRM {crm}\nNão Ativo na UF {(uf.upper())}."
+
                 break
 
     if not nome_medico:

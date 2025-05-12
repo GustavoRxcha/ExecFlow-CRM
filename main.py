@@ -3,19 +3,22 @@ from tkinter import *
 from funcao import *
 from cores import *
 from dotenv import load_dotenv
+import os
 from PIL import Image, ImageTk
 
 ##############################CONEXÃO-CONEXÃO-CONEXÃO###########################################################
 
 load_dotenv()
+central_user = os.getenv("CENTRAL_USER")
+central_pass = os.getenv("CENTRAL_PASS")
 
 conn = pyodbc.connect(
                 f'DRIVER={{ODBC Driver 17 for SQL Server}};'
-                f'SERVER=localhost\SQLEXPRESS;'
-                f'DATABASE=LOJA;'
-                'Trusted_Connection=yes;'
-                #f'UID={self.controller.usuario_sql};'
-                #f'PWD={self.controller.senha_sql};'
+                f'SERVER=procfitprod.intra.drogariasnissei.com.br;'
+                f'DATABASE=PBS_NISSEI_DADOS;'
+                #'Trusted_Connection=yes;'
+                f'UID={central_user};'
+                f'PWD={central_pass};'
                 'Connection Timeout=3;'
             )
 
