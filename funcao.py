@@ -40,7 +40,7 @@ def cadastrar_crm(conn, uf, crm):
         resultado = cursor.fetchone()
 
         if resultado[0] > 0:
-            return f"Já existe um médico com o CRM {crm}\nCadastrado no estado {uf.upper()}."
+            return f"Médico: {nome_medico}\nCRM: {crm}\n\nJá cadastrado no estado {uf.upper()}."
 
         cursor.execute(script_crm, (nome_medico, crm, uf.upper()))
         conn.commit()
